@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {MainStackParamList} from '../route/types';
+import {MainStackParamList} from '../routes/types';
 import colors from '../styles/colors';
 import globalStyles from '../styles/globalStyles';
 

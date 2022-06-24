@@ -1,7 +1,3 @@
-/*
- *   Copyright (c) 2021 nVipani Technology Solutions Private Limited.
- *   All rights reserved.
- */
 import {StyleSheet} from 'react-native';
 
 const globalStyles = StyleSheet.create({

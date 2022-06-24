@@ -1,7 +1,3 @@
-/*
- *   Copyright (c) 2021 nVipani Technology Solutions Private Limited.
- *   All rights reserved.
- */
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import Game from '../screens/game';

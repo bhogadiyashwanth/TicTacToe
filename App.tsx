@@ -11,7 +11,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import MainStackScreen from './app/route/mainStack';
+import MainStackScreen from './app/routes/mainStack';
 
 const App = () => {
   return (

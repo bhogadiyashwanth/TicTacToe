@@ -1,16 +1,17 @@
-name: Trigger Build on PR comment
+name: Trigger Build on circle CI
 on:
   workflow_dispatch:
     inputs:
-      update:
-        type: boolean
-        description: 'Bump version'
-      version:
+      build-type:
         type: choice
-        description: 'Type of version bump'
+        description: 'Type of build'
         options:
-          - minor
-          - patch
+          - android-prod
+          - ios-prod
+          - android
+          - ios
+          - build
+          - build-prod
 jobs:
   trigger-build:
     name: Trigger build
@@ -22,5 +23,5 @@ jobs:
           -H "Circle-Token: ${{ secrets.CIRCLECI_TOKEN }}" \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d '{ "parameters": { "build": true }, "branch": "v-development" }' \
+          -d '{ "parameters": { "${{ github.event.inputs.build-type }}": true }, "branch": "v-development" }' \
           https://circleci.com/api/v2/project/github/SvavaCapital/proximus/pipeline

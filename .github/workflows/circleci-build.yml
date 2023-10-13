@@ -1,0 +1,26 @@
+name: Trigger Build on PR comment
+on:
+  workflow_dispatch:
+    inputs:
+      update:
+        type: boolean
+        description: 'Bump version'
+      version:
+        type: choice
+        description: 'Type of version bump'
+        options:
+          - minor
+          - patch
+jobs:
+  trigger-build:
+    name: Trigger build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger CircleCI
+        run: |
+          curl -X POST \
+          -H "Circle-Token: ${{ secrets.CIRCLECI_TOKEN }}" \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d '{ "parameters": { "build": true }, "branch": "v-development" }' \
+          https://circleci.com/api/v2/project/github/SvavaCapital/proximus/pipeline

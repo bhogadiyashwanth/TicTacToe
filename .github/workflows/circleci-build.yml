@@ -6,12 +6,12 @@ on:
         type: choice
         description: 'Type of build'
         options:
-          - android-prod
-          - ios-prod
-          - android
-          - ios
           - build
-          - build-prod
+          - ios
+          - android
+          - build_prod
+          - ios_prod
+          - android_prod
 jobs:
   trigger-build:
     name: Trigger build
@@ -23,5 +23,5 @@ jobs:
           -H "Circle-Token: ${{ secrets.CIRCLECI_TOKEN }}" \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d '{ "parameters": { "${{ github.event.inputs.build-type }}": true }, "branch": "v-development" }' \
+          -d '{ "parameters": { "${{ github.event.inputs.build-type }}": true }, "branch": "${{ github.ref_name }}" }' \
           https://circleci.com/api/v2/project/github/SvavaCapital/proximus/pipeline
